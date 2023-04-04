@@ -49,7 +49,7 @@ ul {
 	/* width: 1158px; */
 	margin: 0 auto;
 	padding: 0 15px;
-	border: 2px dashed tomato;
+	outline: 2px dashed tomato;
 	width: 100%;
 	height: 100%;
 	max-width: 426px;
@@ -116,9 +116,6 @@ ul {
 	margin-right: 40px;
 }
 
-a.logo-marg {
-	margin-right: 76px;
-}
 
 /* -------Contacts-------- */
 .contacts .contacts-list-item>a {
@@ -158,6 +155,7 @@ a.logo-marg {
 	display: flex;
 	margin-left: auto;
 	align-items: center;
+	padding: 0;
 }
 
 .burger-icon {
@@ -173,21 +171,36 @@ a.logo-marg {
 
 .mob-menu-wrap {
 	width: 100%;
-	height: 100vh;
+	height: 100%;
+	max-width: 428px;
 	overflow-y: scroll;
 	background-color: var(--white-color);
-	padding-left: 40px;
-	padding-bottom: 40px;
-	padding-top: 24px;
-	padding-right: 24px;
-	position: absolute;
+
+	position: fixed;
 	top: 0;
-	left: 0;
+	left: 50%;
+	transform: translate(-50%);
 	z-index: 5;
 
 	opacity: 0;
 	visibility: hidden;
 	pointer-events: none;
+}
+
+.mob-menu {
+	height: 100%;
+	padding-left: 40px;
+	padding-bottom: 40px;
+	padding-top: 24px;
+	padding-right: 24px;
+	display: flex;
+	flex-direction: column;
+	position: relative;
+
+}
+
+.mob-nav-list {
+	margin-bottom: auto;
 }
 
 .mob-menu-wrap.is-open {
@@ -215,7 +228,7 @@ a.logo-marg {
 }
 
 .mob-contacts-list {
-	margin-top: 284px;
+	margin-top: auto;
 }
 
 .mob-contacts-list-item>a {
@@ -250,10 +263,11 @@ a.logo-marg {
 /* mobile-social */
 .mob-social-media-list {
 	display: flex;
-
+	max-width: 328px;
 
 	justify-content: space-between;
 	margin-top: 48px;
+	margin-bottom: 0;
 }
 
 .social-media-item {
@@ -335,9 +349,6 @@ a.logo-marg {
 	padding-bottom: 96px;
 }
 
-.description-list-item:not(:last-child) {
-	margin-bottom: 72px;
-}
 
 .descr-header {
 	font-weight: 700;
@@ -450,16 +461,16 @@ a.logo-marg {
 
 .customers-list {
 	display: flex;
-	column-gap: 24px;
-	margin-top: 72px;
 
+	margin-top: 72px;
+	justify-content: space-between;
 	row-gap: 72px;
 	flex-wrap: wrap;
-	justify-content: center;
+
 }
 
 .customers-list-item {
-	width: 168px;
+	width: 190px;
 	height: 88px;
 
 }
@@ -907,6 +918,7 @@ a.logo-marg {
 	color: #8E8F99;
 	display: flex;
 	align-items: center;
+
 }
 
 .form-label-check .s-check {
@@ -922,13 +934,17 @@ a.logo-marg {
 	fill: transparent;
 	transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
 		border 250ms cubic-bezier(0.4, 0, 0.2, 1);
-
+	flex-shrink: 0;
 }
 
 .form-checkbox:checked+.form-label-check span {
 	fill: var(--accent-fill-color);
 	background-color: var(--active-color);
 	border: 0;
+}
+
+.text-check>a {
+	color: var(--primary-color);
 }
 
 .submit-btn {
@@ -966,6 +982,11 @@ a.logo-marg {
 
 	}
 
+	.customers-list {
+		column-gap: 16px;
+		justify-content: center;
+	}
+
 }
 
 @media screen and (max-width:767px) {
@@ -973,6 +994,11 @@ a.logo-marg {
 	.navigation,
 	.contacts {
 		display: none;
+
+	}
+
+	.description-list-item:not(:last-child) {
+		margin-bottom: 72px;
 	}
 
 	.team-card:not(:last-child) {
@@ -1036,6 +1062,10 @@ a.logo-marg {
 		display: flex;
 	}
 
+	a.logo-marg {
+		margin-right: 76px;
+	}
+
 	.hero {
 
 		background-image: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)), url(../images/Dark-bg-tab.jpg);
@@ -1080,7 +1110,7 @@ a.logo-marg {
 		border-radius: 2px;
 		position: absolute;
 		left: 0px;
-		top: 48px;
+		top: 44px;
 	}
 
 	.hero {
@@ -1093,7 +1123,13 @@ a.logo-marg {
 		line-height: 1.07;
 		max-width: 496px;
 		margin-bottom: 48px;
+		margin-left: auto;
+		margin-right: auto;
+	}
 
+	.descr-header {
+
+		text-align: left;
 	}
 
 	.description-list {
@@ -1122,6 +1158,22 @@ a.logo-marg {
 	.portfolio-cards {
 		background: #ffffff;
 		width: calc((100% - 48px) / 2);
+	}
+
+	.customers-list {
+
+		column-gap: 24px;
+		margin-top: 72px;
+
+		row-gap: 72px;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	.customers-list-item {
+		width: 168px;
+		height: 88px;
+
 	}
 
 	/* Footer */
@@ -1169,16 +1221,34 @@ a.logo-marg {
 		padding-bottom: 12px;
 	}
 
+	.navigation-item.active::after {
+		content: "";
+		top: 42px;
+	}
+
+	.contacts .contacts-list-item>a {
+
+		font-size: 12px;
+		line-height: 1.17;
+		letter-spacing: 0.04em;
+		transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+	}
+
 	.contacts-flex {
 		flex-direction: column;
 		gap: 6px;
+	}
+
+	.hero-title {
+		margin-bottom: 40px;
 	}
 
 	.description-list {
 		justify-content: space-between;
 		flex-wrap: wrap;
 		column-gap: 24px;
-		row-gap: 0px;
+		row-gap: 72px;
 	}
 
 	.description-list-item {
@@ -1189,6 +1259,12 @@ a.logo-marg {
 		max-width: 356px;
 		font-weight: 500;
 
+	}
+
+	.team-cards-list {
+		display: flex;
+		column-gap: 24px;
+		row-gap: 64px;
 	}
 
 	.footer .container {
